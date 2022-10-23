@@ -7,27 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatService", "ChatService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatServiceTest", "ChatServiceTest\ChatServiceTest.csproj", "{108F385A-6A57-44D3-BDF3-CF2EB9159D87}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "mychat.frontend", "..\mychat.frontend\", "{5A1FA03B-9FDE-40F4-947D-009A6B4C55FF}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_50235"
-		Debug.AspNetCompiler.PhysicalPath = "..\mychat.frontend\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50235\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_50235"
-		Release.AspNetCompiler.PhysicalPath = "..\mychat.frontend\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50235\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "50235"
-		SlnRelativePath = "..\mychat.frontend\"
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,10 +21,6 @@ Global
 		{108F385A-6A57-44D3-BDF3-CF2EB9159D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{108F385A-6A57-44D3-BDF3-CF2EB9159D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{108F385A-6A57-44D3-BDF3-CF2EB9159D87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A1FA03B-9FDE-40F4-947D-009A6B4C55FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A1FA03B-9FDE-40F4-947D-009A6B4C55FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A1FA03B-9FDE-40F4-947D-009A6B4C55FF}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A1FA03B-9FDE-40F4-947D-009A6B4C55FF}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
