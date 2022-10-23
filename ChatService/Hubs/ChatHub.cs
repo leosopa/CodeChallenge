@@ -40,9 +40,9 @@ namespace ChatService.Hubs
                     var stock = await _ServiceBot.GetSotck(message.Replace("/stock=", ""));
 
                     if (stock != null)
-                    {
                         message = $"{stock.Symbol} quote is ${stock.Close} per share";
-                    }
+                    else
+                        message = "Stock not found. Please try a diferent code.";
 
                     await Clients.Group(userConnection.Room.Name).SendAsync("ReceiveMessage", "ChatBot", message);
 

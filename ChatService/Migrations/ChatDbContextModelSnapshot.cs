@@ -89,6 +89,10 @@ namespace ChatService.Migrations
                     b.HasIndex("RoomName");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new { Login = "ChatBot", Name = "Chat Bot", Password = System.Text.Encoding.UTF8.GetBytes("1") }
+                    );
                 });
 
             modelBuilder.Entity("ChatService.Model.Message", b =>

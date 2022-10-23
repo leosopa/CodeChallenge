@@ -26,17 +26,23 @@ namespace ChatService.Services
                 var data = stockResponse.Substring(stockResponse.IndexOf(Environment.NewLine, StringComparison.Ordinal) + 2);
                 var processedArray = data.Split(',');
                 var culture = new CultureInfo("en-US");
-                return new Stock()
+
+                if (processedArray[1].Contains("N/D") && processedArray[2].Contains("N/D"))
+                    return null;
+                else
                 {
-                    Symbol = processedArray[0],
-                    Date = !processedArray[1].Contains("N/D") ? Convert.ToDateTime(processedArray[1]) : default,
-                    Time = !processedArray[2].Contains("N/D") ? Convert.ToDateTime(processedArray[2]) : default,
-                    Open = !processedArray[3].Contains("N/D") ? Convert.ToDouble(processedArray[3], culture) : default,
-                    High = !processedArray[4].Contains("N/D") ? Convert.ToDouble(processedArray[4], culture) : default,
-                    Low = !processedArray[5].Contains("N/D") ? Convert.ToDouble(processedArray[5], culture) : default,
-                    Close = !processedArray[6].Contains("N/D") ? Convert.ToDouble(processedArray[6], culture) : default,
-                    Volume = !processedArray[7].Contains("N/D") ? Convert.ToDouble(processedArray[7]) : default,
-                };
+                    return new Stock()
+                    {
+                        Symbol = processedArray[0],
+                        Date = !processedArray[1].Contains("N/D") ? Convert.ToDateTime(processedArray[1]) : default,
+                        Time = !processedArray[2].Contains("N/D") ? Convert.ToDateTime(processedArray[2]) : default,
+                        Open = !processedArray[3].Contains("N/D") ? Convert.ToDouble(processedArray[3], culture) : default,
+                        High = !processedArray[4].Contains("N/D") ? Convert.ToDouble(processedArray[4], culture) : default,
+                        Low = !processedArray[5].Contains("N/D") ? Convert.ToDouble(processedArray[5], culture) : default,
+                        Close = !processedArray[6].Contains("N/D") ? Convert.ToDouble(processedArray[6], culture) : default,
+                        Volume = !processedArray[7].Contains("N/D") ? Convert.ToDouble(processedArray[7]) : default,
+                    };
+                }
             }
 
             return null;
