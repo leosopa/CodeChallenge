@@ -12,7 +12,7 @@ namespace ChatService.Model
         [DataType("varchar(50)")]
         public string Name { get; set; }
 
-        public string Password { get; set; }
+        public byte[] Password { get; set; }
 
         public byte[] Salt { get; set; }
 

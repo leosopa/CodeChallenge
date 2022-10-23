@@ -1,5 +1,6 @@
 using ChatService.Hubs;
 using ChatService.Model;
+using ChatService.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -16,8 +17,10 @@ builder.Services.AddControllers().AddNewtonsoftJson(
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ChatDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
-     
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")), ServiceLifetime.Transient);
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRoomService, RoomService>();
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>

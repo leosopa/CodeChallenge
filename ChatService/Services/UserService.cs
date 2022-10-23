@@ -12,9 +12,9 @@ namespace ChatService.Services
         {
             _dbContext = context;
         }
-        public Task<User> GetUserByName(string userLogin)
+        public Task<User> GetUserByLogin(string userLogin)
         {
-            return _dbContext.Users.FirstOrDefaultAsync(u => u.Name == userLogin);
+            return _dbContext.Users.FirstOrDefaultAsync(u => u.Login == userLogin);
         }
     }
 }

@@ -103,10 +103,10 @@ namespace ChatService.Controllers
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("login")]
-        public async Task<bool> Login(User user)
+        [HttpGet("login/{login}/{password}")]
+        public async Task<bool> Login(string login, string password)
         {
-            var logged = await _authService.Login(user.Login, user.Password);
+            var logged = await _authService.Login(login, password);
 
             return logged;
         }

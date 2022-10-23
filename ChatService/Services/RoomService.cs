@@ -46,12 +46,12 @@ namespace ChatService.Services
                     throw;
                 }
             }
-
             return "Joined!";
         }
 
         public async Task<string> LeftRoom(string userLogin, string roomName)
         {
+
             var room = await _dbContext.Rooms.FirstOrDefaultAsync(r => r.Name == roomName);
             var removeUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Login == userLogin);
 
@@ -73,12 +73,12 @@ namespace ChatService.Services
             {
                 throw;
             }
-
             return "Left";
         }
 
         public async Task<string> SendMessage(string userLogin, string roomName, string textMessage)
         {
+
             var room = await _dbContext.Rooms.FirstOrDefaultAsync(r => r.Name == roomName);
             var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Login == userLogin);
 

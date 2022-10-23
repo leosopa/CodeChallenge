@@ -36,6 +36,12 @@ namespace ChatService.Hubs
 
         public async Task JoinRoom(UserConnection userConnection)
         {
+
+            var user = _serviceUser.GetUserByLogin(userConnection.User.Login);
+
+            if (user == null)
+                throw new KeyNotFoundException();
+
             await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.Room.Name);
 
             connections[Context.ConnectionId] = userConnection;
@@ -56,6 +62,7 @@ namespace ChatService.Hubs
             if (connections.TryGetValue(Context.ConnectionId, out var userConnection))
             {
                 _serviceRoom.LeftRoom(userConnection.User.Login, userConnection.Room.Name);
+                _serviceRoom.SendMessage(botUser.Login, userConnection.Room.Name, $"{userConnection.User.Login} has left {userConnection.Room.Name}");
 
                 connections.Remove(Context.ConnectionId);
                 Clients.Group(userConnection.Room.Name).SendAsync("ReceiveMessage", botUser.Login, $"{userConnection.User.Login} has left");

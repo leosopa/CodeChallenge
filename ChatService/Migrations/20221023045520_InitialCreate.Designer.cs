@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChatService.Migrations
 {
     [DbContext(typeof(ChatDbContext))]
-    [Migration("20221023035150_InitialCreate")]
+    [Migration("20221023045520_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

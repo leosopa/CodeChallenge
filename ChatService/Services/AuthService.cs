@@ -1,7 +1,6 @@
 ﻿using ChatService.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Text;
 
 namespace ChatService.Services
 {
@@ -66,7 +65,7 @@ namespace ChatService.Services
             var hmac = new System.Security.Cryptography.HMACSHA512();
 
             user.Salt = hmac.Key;
-            user.Password = Encoding.UTF8.GetString(hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password)));
+            user.Password = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
 
         }
     }

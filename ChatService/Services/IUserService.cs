@@ -4,7 +4,7 @@ namespace ChatService.Services
 {
     public interface IUserService
     {
-        public Task<User> GetUserByName(string userName); 
+        public Task<User> GetUserByLogin(string userName); 
 
     }
 }
