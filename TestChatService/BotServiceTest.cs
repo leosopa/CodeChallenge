@@ -4,12 +4,12 @@ using System;
 namespace TestChatService
 {
     [TestClass]
-    public class UnitTest1
+    public class BotServiceTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void GetStockReturnObject()
         {
-
+            new BotService
         }
     }
 }

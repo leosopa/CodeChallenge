@@ -10,6 +10,7 @@ namespace ChatService.Hubs
         private readonly IDictionary<string, UserConnection> connections;
         private readonly IRoomService _serviceRoom;
         private readonly IUserService _serviceUser;
+        private readonly BotService _ServiceBot;
 
         public ChatHub(IDictionary<string, UserConnection> connections, IServiceProvider sp)
         {
@@ -20,6 +21,8 @@ namespace ChatService.Hubs
 
             _serviceRoom = new RoomService(scope.ServiceProvider.GetRequiredService<ChatDbContext>());
             _serviceUser = new UserService(scope.ServiceProvider.GetRequiredService<ChatDbContext>());
+            _ServiceBot = new BotService();
+
         }
 
         public async Task SendMessage(string message)
@@ -31,6 +34,21 @@ namespace ChatService.Hubs
                 await Clients.Group(userConnection.Room.Name).SendAsync("ReceiveMessage", userConnection.User.Login, message);
 
                 await _serviceRoom.SendMessage(userConnection.User.Login, userConnection.Room.Name, message);
+
+                if (message.ToLower().Contains("/stock="))
+                {
+                    var stock = await _ServiceBot.GetSotck(message.Replace("/stock=", ""));
+
+                    if (stock != null)
+                    {
+                        message = $"{stock.Symbol} quote is ${stock.Close} per share";
+                    }
+
+                    await Clients.Group(userConnection.Room.Name).SendAsync("ReceiveMessage", "ChatBot", message);
+
+                    await _serviceRoom.SendMessage("ChatBot", userConnection.Room.Name, message);
+
+                }
             }
         }
 
