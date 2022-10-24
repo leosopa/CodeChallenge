@@ -18,4 +18,4 @@ Steps:
 		4.2.1 - user1 - password:123
 		4.2.2 - user2 - password:123
 5 - You can create new users in :https://localhost:7173/api/Users/create
-6 - You can create new rooms in: https://localhost:7173/api/Rooms/create
+6 - You can create new rooms in: https://localhost:7173/api/Rooms/create 
