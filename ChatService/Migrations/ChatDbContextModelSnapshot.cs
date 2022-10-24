@@ -62,6 +62,10 @@ namespace ChatService.Migrations
                     b.HasKey("Name");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new { Name = "Main Room" }
+                    );
                 });
 
             modelBuilder.Entity("ChatService.Model.User", b =>
