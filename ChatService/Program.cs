@@ -13,9 +13,10 @@ builder.Services.AddControllers().AddNewtonsoftJson(
           options => {
               options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
           });
-
+builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddMvcCore();
 builder.Services.AddDbContext<ChatDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")), ServiceLifetime.Transient);
 builder.Services.AddScoped<IUserService, UserService>();
@@ -36,11 +37,11 @@ builder.Services.AddSingleton<IDictionary<string, UserConnection>>(opts => new D
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 
 app.UseCors();

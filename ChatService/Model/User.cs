@@ -20,8 +20,6 @@ namespace ChatService.Model
 
         public User()
         {
-            Name = String.Empty;
-            this.Room = new Room();
         }
 
         public User(string login, string name)

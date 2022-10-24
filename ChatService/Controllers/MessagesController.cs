@@ -45,7 +45,7 @@ namespace ChatService.Controllers
         [HttpGet("getbyroom/{roomName}")]
         public async Task<ActionResult<IEnumerable<Message>>> GetMessageByRoom(string roomName)
         {
-            var messages = _context.Messages.Take(50).OrderByDescending(m => m.TimeStamp).ToList();
+            var messages = _context.Messages.Where(m=> m.RoomName == roomName).Take(50).OrderByDescending(m => m.TimeStamp).ToList();
 
             return messages.OrderBy(m => m.TimeStamp).ToList();
         }

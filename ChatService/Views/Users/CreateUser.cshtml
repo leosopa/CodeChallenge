@@ -1,0 +1,32 @@
+﻿@model ChatService.Model.User
+
+@{
+    ViewData["Title"] = "CreateUser";
+}
+
+<h1>CreateUser</h1>
+
+<h4>User</h4>
+<hr />
+@using (Html.BeginForm("Create", "UserController", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label asp-for="Login" class="control-label">Login</label>
+            @Html.TextBox("login")
+            <span asp-validation-for="Name" class="text-danger"></span>
+            <label asp-for="Name" class="control-label">Name</label>
+            @Html.TextBox("name")
+            <label asp-for="Password" class="control-label">Password</label>
+            @Html.Password("password")
+        <input type="submit" value="Create" />
+        </div>
+    }
+    
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

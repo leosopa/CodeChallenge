@@ -11,7 +11,7 @@ namespace ChatService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoomsController : ControllerBase
+    public class RoomsController : Controller
     {
         private readonly ChatDbContext _context;
 
@@ -72,11 +72,18 @@ namespace ChatService.Controllers
             return NoContent();
         }
 
+        [HttpGet("create")]
+        public IActionResult CreateRoom()
+        {
+            return View();
+        }
+
         // POST: api/Rooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Room>> PostRoom(Room room)
+        [HttpPost("create")]
+        public async Task<ActionResult<Room>> CreateRoom([FromForm] string name)
         {
+            var room = new Room() { Name = name };
             _context.Rooms.Add(room);
             try
             {

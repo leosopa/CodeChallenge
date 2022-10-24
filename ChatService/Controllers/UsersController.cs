@@ -12,7 +12,7 @@ namespace ChatService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : Controller
     {
         private readonly ChatDbContext _context;
 
@@ -89,16 +89,43 @@ namespace ChatService.Controllers
             return NoContent();
         }
 
+        // Get: api/Users
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpGet("create")]
+        public IActionResult CreateUser()
+        {
+            return View();
+        }
+
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<User>> CreateUser(User user, string password)
+        [HttpPost("create")]
+        [ValidateAntiForgeryToken]
+        //public async Task<IActionResult> CreateUser(User user, string password)
+        public async Task<IActionResult> CreateUser([FromForm] string login, [FromForm] string name, [FromForm] string password)
         {
-            var created = await _authService.Create(user, password);
-            if (created)
-                return CreatedAtAction("GetUser", new { name = user.Login }, user);
-            else
-                return BadRequest();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var created = await _authService.Create(new User { Login = login, Name = name }, password);
+                    if (created)
+                        return Ok("User created!");
+                    else
+                        return BadRequest();
+
+                }
+                else
+                    return BadRequest();
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
+            }
+            return View(new User { Login = login, Name = name });
         }
 
         // POST: api/Users

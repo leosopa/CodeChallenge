@@ -22,4 +22,5 @@ namespace ChatServiceTest
             Assert.AreEqual("Joined", room);
 
         }
+    }
 }

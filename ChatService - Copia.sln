@@ -7,6 +7,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatService", "ChatService\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatServiceTest", "ChatServiceTest\ChatServiceTest.csproj", "{108F385A-6A57-44D3-BDF3-CF2EB9159D87}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "mychat.frontend(1)", "mychat.frontend\", "{E6BBBD74-3118-4187-8728-FF45C33A406B}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52960"
+		Debug.AspNetCompiler.PhysicalPath = "mychat.frontend\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52960\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52960"
+		Release.AspNetCompiler.PhysicalPath = "mychat.frontend\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52960\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52960"
+		SlnRelativePath = "mychat.frontend\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
