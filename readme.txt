@@ -10,6 +10,7 @@ Steps:
 2 - Execute migrations (SQLExpress Database):
 	2.1 - Add-Migrations "Initial-Create"
 	2.2 - UpdateDatabase
+	2.3 - Execute INSERTS.SQL script.
 3 - npm start in mychat.frontend folder
 4 - Open http://localhost:3000/ for chat
 	4.1 - There is one room in migrations
